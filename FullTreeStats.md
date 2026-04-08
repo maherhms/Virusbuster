@@ -1,7 +1,7 @@
 # Nodebuster Skill Tree — Implementation Checklist
 
 // X is implemented stat for skill tree usage
-// ? event missing to utilize it within gameplay
+// ? (//TODO:)event missing to utilize it within gameplay
 
 ## Damage
 
