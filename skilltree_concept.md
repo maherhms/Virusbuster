@@ -338,21 +338,5 @@ health = base_health
 
 }
 
----
-
-# get health(){
-
-
-}
-
-# gets the final damage value, from all damage sources, reduced by armor each(case specific)
-get_incoming_dmg(){
-
-}
-
-set_base_dmg()
-
-
-
 
 ```
