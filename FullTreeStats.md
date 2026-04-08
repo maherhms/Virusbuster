@@ -24,13 +24,13 @@
 - [ ] last strike — +25% damage to enemies below 50% HP (6 levels)
 - [ ] finishing blow — +100% damage to enemies below 50% HP (4 levels)
 
-## Phase 2
+## Phase 3
 ## Critical Hits
 - [ ] crit chance — +10% crit chance (10 levels)
 - [ ] crit damage — +50% crit damage (10 levels)
 - [ ] big crit — +200% crit damage (8 levels)
 
-## Phase 2
+## Phase 3
 ## Boss Damage
 - [ ] giant slayer — +50 damage vs bosses (10 levels)
 - [ ] colossus slayer — +100% damage vs bosses (10 levels)
@@ -40,7 +40,7 @@
 - [ ] repeating — +20% attack speed (1 level)
 - [ ] repeat-repeating — +20% attack speed (1 level)
 
-## Phase 1
+## Phase 2
 ## Attack Size
 - [ ] influence — +10% attack size (10 levels)
 - [ ] domain expansion — +50% attack size (1 level)
@@ -82,14 +82,14 @@
 - [X?] parasite evolution — +3 permanent max HP per kill (1 level)
 - [X?] insatiable — +8 permanent max HP per kill (1 level)
 
-## Phase 1
+## Phase 2
 ## Health Regeneration
 - [ ] repair tool — +0.1 HP/sec (5 levels)
 - [ ] self-repair — +4 HP/sec (1 level)
 - [ ] scaling regeneration — +1% max HP/sec (10 levels)
 - [ ] instant repair — +2% max HP/sec (5 levels)
 
-## Phase 2
+## Phase 3
 ## Conditional Health Regeneration
 - [ ] salvaging — +1 HP on kill (5 levels)
 - [ ] skilled salvager — +8 HP on kill (1 level)
@@ -98,7 +98,7 @@
 - [ ] extraction — restore 1% HP on hit (2 levels)
 - [ ] patcher — restore 0.5 HP on pickup (1 level)
 
-## Phase 1
+## Phase 2
 ## Armor
 - [ ] firewall — +0.2 armor (10 levels)
 - [ ] antivirus — +0.6 armor (5 levels)
@@ -117,7 +117,7 @@
 
 # Miscellaneous
 
-## Phase 2
+## Phase 3
 ## Enemy Spawns
 - [ ] crowding — +50% spawn rate (15 levels)
 - [ ] swarming — +200% spawn rate (1 level)
