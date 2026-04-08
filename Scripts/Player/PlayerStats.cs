@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Nodebuster
-{
-    public class PlayerStats
+namespace VirusBuster;
+
+public class PlayerStats
     {
         #region Damage stats
         public float BaseDamage {get ; private set;} = 10f;
@@ -11,7 +11,9 @@ namespace Nodebuster
         public float HealthPercentageAsBonusDamage { get; private set;} =0f;
         public float PercentagePerSecondBonusDamage { get ; private set ;} =0f;
         public float AccumulatedPercentagePerSecondBonusDamage {get ; private set;} =0f;
-        //computed property re-evaluated on every usage
+        /// <summary>
+        /// computed property re-evaluated on every usage
+        /// </summary>
         public float CurrentDamage => (BaseDamage + FlatBonusDamage + HealthPercentageAsBonusDamage ) * (1f + AccumulatedPercentagePerSecondBonusDamage) ;
         #endregion
 
@@ -20,18 +22,25 @@ namespace Nodebuster
         public float MaxBonusHealth {get; private set;} =0f;
         public float PerKillMaxBonusHealth {get; private set;} =0f;
         public float AccumulatedPerKillMaxBonusHealth {get ; private set;} =0f;
-        //computed property re-evaluated on every usage
+        /// <summary>
+        /// computed property re-evaluated on every usage
+        /// </summary>
         public float MaxHealth => ( BaseHealth + MaxBonusHealth + AccumulatedPerKillMaxBonusHealth);
         #endregion
 
         #region Damage buffs
-        /*this methode is to be used when applying Flat damage bonus for example +1 damage*/
+        /// <summary>
+        ///  this methode is to be used when applying Flat damage bonus for example +1 damage*/
+        /// </summary>
+        /// <param name="amount"></param>
         public void SetFlatBonusDamage(float amount)
         {
             FlatBonusDamage = amount;
         }
-        /*this methode is to be used when applying health based damage bonus 
-        for example +0.1% max health as damage*/
+        /// <summary>
+        /// this methode is to be used when applying health based damage bonus for example +0.1% max health as damage
+        /// </summary>
+        /// <param name="amount"></param>
         public void SetHealthPercentageAsBonusDamage(float amount)
         {
             HealthPercentageAsBonusDamage = (amount * MaxHealth) /100f;
@@ -48,13 +57,18 @@ namespace Nodebuster
         #endregion
 
         #region Health buffs
-        /*this methode is to be used when applying max health bonus for example +4 max health*/
+        /// <summary>
+        /// this methode is to be used when applying max health bonus for example +4 max health
+        /// </summary>
+        /// <param name="amount"></param>
         public void SetMaxBonusHealth(float amount)
         {
             MaxBonusHealth = amount;
         }
-        /*this methode is to be used when applying max health bonus per kill 
-        for example +1 permanent max HP per kill*/
+        /// <summary>
+        /// this methode is to be used when applying max health bonus per kill for example +1 permanent max HP per kill
+        /// </summary>
+        /// <param name="amount"></param>
         public void SetPerKillMaxBonusHealth(float amount)
         {
             PerKillMaxBonusHealth = amount;
@@ -65,4 +79,3 @@ namespace Nodebuster
         } 
         #endregion
     }
-}
