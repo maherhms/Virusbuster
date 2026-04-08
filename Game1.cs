@@ -7,7 +7,7 @@ namespace VirusBuster;
 public class Game1 : Core
 {
 
-    public Game1() : base("Dungeon Slime", 1280, 720, false)
+    public Game1() : base("VirusBuster", 1280, 720, false)
     {
 
     }

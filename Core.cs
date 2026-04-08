@@ -115,7 +115,7 @@ public class Core : Game
     protected override void Update(GameTime gameTime)
     {
 
-        if (ExitOnEscape && GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (ExitOnEscape && Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
             Exit();
         }
