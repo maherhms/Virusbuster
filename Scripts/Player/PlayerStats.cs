@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace VirusBuster;
+namespace VirusBuster.Player;
 
 public class PlayerStats
     {

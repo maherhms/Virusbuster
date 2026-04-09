@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Media;
-using MonoGameLibrary;
 using VirusBuster.Scenes;
+using VirusBuster.Base;
 
 namespace VirusBuster;
 
-public class Game1 : Core
+public class Game1 : GameCore
 {
 
     public Game1() : base("VirusBuster", 1280, 720, false)
@@ -17,7 +17,7 @@ public class Game1 : Core
         base.Initialize();
 
         // Start the game with the title scene.
-        ChangeScene(new Prestige());
+        ChangeScene(new BreachScene());
     }
 
     protected override void LoadContent()
