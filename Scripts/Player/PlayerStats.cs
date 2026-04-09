@@ -1,4 +1,5 @@
 using System;
+using System.Runtime;
 using System.Runtime.Serialization;
 using Microsoft.Xna.Framework;
 
@@ -84,5 +85,12 @@ public class PlayerStats
         {
             AccumulatedPerKillMaxBonusHealth += PerKillMaxBonusHealth;
         } 
+        #endregion
+
+        #region Attack size buffs
+        public void SetPercentageBonusAttackSize(float amount)
+        {
+            PercentageBonusAttackSize = amount;
+        }
         #endregion
     }

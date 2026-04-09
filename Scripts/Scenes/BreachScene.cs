@@ -21,10 +21,10 @@ public class BreachScene : Scene
     }
     public override void Draw(GameTime gameTime)
     {
-        GameCore.GraphicsDevice.Clear(Color.Black);
+        GameCore.GraphicsDevice.Clear(Color.Gray);
 
         GameCore.SpriteBatch.Begin();
-        GameCore.SpriteBatch.Draw(playerMouse.GetPlayerMouseTexture(), playerMouse.GetCenteredMousePosition(), Color.CornflowerBlue);
+        playerMouse.DrawPlayerMouse();
         GameCore.SpriteBatch.End();
         
         base.Draw(gameTime);
