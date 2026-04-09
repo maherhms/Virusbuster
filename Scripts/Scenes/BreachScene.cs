@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
-using MonoGameLibrary;
-using MonoGameLibrary.Scenes;
+using VirusBuster.Base;
 
 namespace VirusBuster.Scenes;
 
-public class Prestige : Scene
+public class BreachScene : Scene
 {
     public override void Draw(GameTime gameTime)
     {
-        Core.GraphicsDevice.Clear(Color.CornflowerBlue);
+        GameCore.GraphicsDevice.Clear(Color.CornflowerBlue);
         base.Draw(gameTime);
     }
 }
