@@ -24,3 +24,6 @@ The current version includes:
 - UI and menu scenes  
 - Visual effects + polish  
 
+## Launch Game
+
+- dotnet run --project VirusBuster.csproj
