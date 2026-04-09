@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Serialization;
+using Microsoft.Xna.Framework;
 
 namespace VirusBuster.Player;
 
@@ -26,6 +27,12 @@ public class PlayerStats
         /// computed property re-evaluated on every usage
         /// </summary>
         public float MaxHealth => ( BaseHealth + MaxBonusHealth + AccumulatedPerKillMaxBonusHealth);
+        #endregion
+
+        #region Attack Size
+        public Vector2 BaseAttackSize {get; private set;} = new Vector2(100,100);
+        public float PercentageBonusAttackSize {get; private set;} =0f;
+        public Vector2 CurrentAttackSize => (BaseAttackSize) * (1f + PercentageBonusAttackSize);
         #endregion
 
         #region Damage buffs
