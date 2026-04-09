@@ -4,6 +4,6 @@ namespace VirusBuster.Base;
 
 public class GameState
 {
-    public PlayerStats PlayerStats {get; set;}
+    public PlayerStats PlayerStats { get; } = new PlayerStats();
     
 }
