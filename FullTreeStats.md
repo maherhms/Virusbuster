@@ -14,7 +14,7 @@
 - [X] netblade — +100 damage (5 levels) => (AddFlatBonusDamage)
 ## Phase 1
 ### Scaling Damage
-- [X?] learning — +1% damage every second (3 levels)
+- [X?] learning — +1% damage every second (3 levels) => (SetPercentagePerSecondBonusDamage)
 - [X] bloodblade — +0.1% max health as damage (1 level) => (AddHealthPercentageBonusDamage)
 
 ## Conditional Damage Nodes
@@ -42,9 +42,9 @@
 
 ## Phase 2
 ## Attack Size
-- [ ] influence — +10% attack size (10 levels)
-- [ ] domain expansion — +50% attack size (1 level)
-- [ ] b.i.g. — +100 attack size (3 levels)
+- [X] influence — +10% attack size (10 levels) => (SetPercentageBonusAttackSize)
+- [X] domain expansion — +50% attack size (1 level) => (SetPercentageBonusAttackSize)
+- [X] b.i.g. — +100 attack size (3 levels) => (SetPercentageBonusAttackSize)
 
 ## Secondary Attacks — Pulse Bolts
 - [ ] pulse bolts — shoot projectiles outward (1 level)
