@@ -16,6 +16,8 @@ public class Game1 : GameCore
     {
         base.Initialize();
 
+        GameState.Initialize();
+
         // Start the game with the title scene.
         ChangeScene(new BreachScene());
     }

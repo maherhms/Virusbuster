@@ -9,5 +9,6 @@ public class BreachScene : Scene
     {
         GameCore.GraphicsDevice.Clear(Color.CornflowerBlue);
         base.Draw(gameTime);
+
     }
 }
