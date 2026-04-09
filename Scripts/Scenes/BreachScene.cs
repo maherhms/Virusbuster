@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using VirusBuster.Base;
 using VirusBuster.Player;
 
@@ -16,14 +17,15 @@ public class BreachScene : Scene
 
     public override void LoadContent()
     {
+        playerMouse.LoadContent(); 
+
         base.LoadContent();
-        playerMouse.LoadContent();     
     }
     public override void Draw(GameTime gameTime)
     {
         GameCore.GraphicsDevice.Clear(Color.Gray);
 
-        GameCore.SpriteBatch.Begin();
+        GameCore.SpriteBatch.Begin(blendState: BlendState.NonPremultiplied);
         playerMouse.DrawPlayerMouse();
         GameCore.SpriteBatch.End();
         

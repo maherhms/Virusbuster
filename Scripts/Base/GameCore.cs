@@ -87,7 +87,7 @@ public class GameCore : Game
         Content.RootDirectory = "Content";
 
         // Mouse is visible by default.
-        IsMouseVisible = true;
+        IsMouseVisible = false;
 
         // Exit on escape is true by default
         ExitOnEscape = true;        
