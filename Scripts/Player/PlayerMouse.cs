@@ -7,102 +7,104 @@ namespace VirusBuster.Player;
 
 public class PlayerMouse
 {
-    Rectangle rectangle;
-    Rectangle centerRectangle;
-    Texture2D mouseTexture;
-    Texture2D centerMouseTexture;
-    private Texture2D mouseContourTexture;
-    int contourThickness = 5;
+    private Rectangle _attackRectangle;
+    private Rectangle _aimRectangle;
+    private Texture2D _attackRectangleTexture;
+    private Texture2D _aimRectangleTexture;
+    private Texture2D _mouseContourTexture;
+    private int _contourThickness = 5;
 
-    Color mouseColor = new Color(144,213,255, 50);
-    Color contourColor = new Color(Color.White, 0.35f);
-    Color geometryTint = Color.White;
+    private readonly Color _mouseColor = new Color(144, 213, 255, 50);
+    private readonly Color _contourColor = new Color(Color.White, 0.35f);
+    private readonly Color _geometryTint = Color.White;
+
     public void LoadContent()
     {
         InitializeMouseTexture();
         InitializeCenterMouseTexture();
     }
 
-    public void InitializeMouseTexture()
+    private void InitializeMouseTexture()
     {
-        rectangle = new Rectangle(0, 0, (int)GameState.Instance.PlayerStats.CurrentAttackSize.X, (int)GameState.Instance.PlayerStats.CurrentAttackSize.Y);
+        _attackRectangle = new Rectangle(
+            0, 0,
+            (int)GameState.Instance.PlayerStats.CurrentAttackSize.X,
+            (int)GameState.Instance.PlayerStats.CurrentAttackSize.Y
+        );
 
-        mouseTexture = new Texture2D(GameCore.GraphicsDevice, rectangle.Width, rectangle.Height);
-        mouseContourTexture = mouseTexture;
-        
-        Color[] data = new Color[rectangle.Width * rectangle.Height];
-
-        for (int i = 0; i < data.Length; ++i) 
-            data[i] = geometryTint;
-
-        mouseTexture.SetData(data);
+        _attackRectangleTexture = CreateFilledTexture(_attackRectangle.Width, _attackRectangle.Height, _geometryTint);
+        _mouseContourTexture = _attackRectangleTexture;
     }
 
-    public void InitializeCenterMouseTexture()
+    private void InitializeCenterMouseTexture()
     {
-        centerRectangle = new Rectangle(0, 0, 5, 5);
-
-        centerMouseTexture = new Texture2D(GameCore.GraphicsDevice, centerRectangle.Width, centerRectangle.Height);
-        
-        Color[] data = new Color[centerRectangle.Width * centerRectangle.Height];
-
-        for (int i = 0; i < data.Length; ++i) 
-            data[i] = geometryTint;
-
-        centerMouseTexture.SetData(data);
+        _aimRectangle = new Rectangle(0, 0, 5, 5);
+        _aimRectangleTexture = CreateFilledTexture(_aimRectangle.Width, _aimRectangle.Height, _geometryTint);
     }
+
+    /// <summary>
+    /// Creates a texture of given width/height filled with a single color.
+    /// </summary>
+    private Texture2D CreateFilledTexture(int width, int height, Color fillColor)
+    {
+        Texture2D texture = new Texture2D(GameCore.GraphicsDevice, width, height);
+
+        Color[] data = new Color[width * height];
+        for (int i = 0; i < data.Length; i++)
+            data[i] = fillColor;
+
+        texture.SetData(data);
+        return texture;
+    }
+
     public Vector2 GetCenteredMousePosition(Rectangle rectangle)
     {
-        return new Vector2(Mouse.GetState().X - rectangle.Width / 2f,Mouse.GetState().Y - rectangle.Height / 2f);
+        return new Vector2(
+            Mouse.GetState().X - rectangle.Width / 2f,
+            Mouse.GetState().Y - rectangle.Height / 2f
+        );
     }
 
     public Vector2 GetMousePosition()
     {
-        return new Vector2(Mouse.GetState().X ,Mouse.GetState().Y);
+        return new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
     }
 
-    public Texture2D GetPlayerMouseTexture()
-    {
-        return mouseTexture;
-    }
-
-    public Color GetPlayerMouseColor()
-    {
-        return mouseColor;
-    }
+    public Rectangle GetAttackRectangle() => _attackRectangle;
+    public Texture2D GetPlayerMouseTexture() => _attackRectangleTexture;
+    public Color GetPlayerMouseColor() => _mouseColor;
 
     public void DrawPlayerMouse()
     {
-        GameCore.SpriteBatch.Draw(mouseTexture, GetCenteredMousePosition(rectangle), mouseColor);
-        GameCore.SpriteBatch.Draw(centerMouseTexture, GetCenteredMousePosition(centerRectangle), Color.White);
-        DrawOutline(GameCore.SpriteBatch,GetCenteredMousePosition(rectangle), contourColor);
+        GameCore.SpriteBatch.Draw(_attackRectangleTexture, GetCenteredMousePosition(_attackRectangle), _mouseColor);
+        GameCore.SpriteBatch.Draw(_aimRectangleTexture, GetCenteredMousePosition(_aimRectangle), Color.White);
+        DrawOutline(GameCore.SpriteBatch, GetCenteredMousePosition(_attackRectangle), _contourColor);
     }
 
     public void DrawOutline(SpriteBatch spriteBatch, Vector2 position, Color color)
     {
         // Top Left
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X, (int)position.Y, rectangle.Width/5, contourThickness), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X, (int)position.Y, _attackRectangle.Width / 5, _contourThickness), color);
 
         // Top Right
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X + (4 * rectangle.Width /5 ), (int)position.Y, rectangle.Width/5, contourThickness), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X + (4 * _attackRectangle.Width / 5), (int)position.Y, _attackRectangle.Width / 5, _contourThickness), color);
 
         // Bottom Left
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X, (int)position.Y + rectangle.Height - contourThickness, rectangle.Width/5, contourThickness), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X, (int)position.Y + _attackRectangle.Height - _contourThickness, _attackRectangle.Width / 5, _contourThickness), color);
 
         // Bottom Right
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X + (4 * rectangle.Width /5 ), (int)position.Y + rectangle.Height - contourThickness, rectangle.Width/5, contourThickness), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X + (4 * _attackRectangle.Width / 5), (int)position.Y + _attackRectangle.Height - _contourThickness, _attackRectangle.Width / 5, _contourThickness), color);
 
         // Left Up
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X, (int)position.Y, contourThickness, rectangle.Height /5), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X, (int)position.Y, _contourThickness, _attackRectangle.Height / 5), color);
 
         // Left Bottom
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X, (int)position.Y + ( 4* rectangle.Height /5), contourThickness, rectangle.Height /5), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X, (int)position.Y + (4 * _attackRectangle.Height / 5), _contourThickness, _attackRectangle.Height / 5), color);
 
         // Right Up
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X + rectangle.Width - contourThickness, (int)position.Y, contourThickness, rectangle.Height /5), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X + _attackRectangle.Width - _contourThickness, (int)position.Y, _contourThickness, _attackRectangle.Height / 5), color);
 
         // Right
-        spriteBatch.Draw(mouseContourTexture, new Rectangle((int)position.X + rectangle.Width - contourThickness, (int)position.Y + ( 4* rectangle.Height /5) , contourThickness, rectangle.Height /5), color);
+        spriteBatch.Draw(_mouseContourTexture, new Rectangle((int)position.X + _attackRectangle.Width - _contourThickness, (int)position.Y + (4 * _attackRectangle.Height / 5), _contourThickness, _attackRectangle.Height / 5), color);
     }
-
 }

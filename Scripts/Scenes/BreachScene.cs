@@ -8,16 +8,20 @@ namespace VirusBuster.Scenes;
 
 public class BreachScene : Scene
 {
-    PlayerMouse playerMouse = new PlayerMouse();
-
+    private PlayerMouse _playerMouse;
+    private PlayerAttackManager _playerAttackManager;
     public override void Initialize()
     {
+        _playerMouse = new PlayerMouse();
+        _playerAttackManager = new PlayerAttackManager(_playerMouse);
+        
+        
         base.Initialize();
     }
 
     public override void LoadContent()
     {
-        playerMouse.LoadContent(); 
+        _playerMouse.LoadContent();
 
         base.LoadContent();
     }
@@ -26,9 +30,9 @@ public class BreachScene : Scene
         GameCore.GraphicsDevice.Clear(Color.Gray);
 
         GameCore.SpriteBatch.Begin(blendState: BlendState.NonPremultiplied);
-        playerMouse.DrawPlayerMouse();
+        _playerMouse.DrawPlayerMouse();
         GameCore.SpriteBatch.End();
-        
+
         base.Draw(gameTime);
     }
 
