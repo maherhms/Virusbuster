@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using VirusBuster.Base;
+using VirusBuster.Utility;
 
 namespace VirusBuster.Player;
 
@@ -32,29 +33,14 @@ public class PlayerMouse
             (int)GameState.Instance.PlayerStats.CurrentAttackSize.Y
         );
 
-        _attackRectangleTexture = CreateFilledTexture(_attackRectangle.Width, _attackRectangle.Height, _geometryTint);
+        _attackRectangleTexture = GeometryFactory.CreateFilledTexture(GameCore.GraphicsDevice,_attackRectangle.Width, _attackRectangle.Height, _geometryTint);
         _mouseContourTexture = _attackRectangleTexture;
     }
 
     private void InitializeCenterMouseTexture()
     {
         _aimRectangle = new Rectangle(0, 0, 5, 5);
-        _aimRectangleTexture = CreateFilledTexture(_aimRectangle.Width, _aimRectangle.Height, _geometryTint);
-    }
-
-    /// <summary>
-    /// Creates a texture of given width/height filled with a single color.
-    /// </summary>
-    private Texture2D CreateFilledTexture(int width, int height, Color fillColor)
-    {
-        Texture2D texture = new Texture2D(GameCore.GraphicsDevice, width, height);
-
-        Color[] data = new Color[width * height];
-        for (int i = 0; i < data.Length; i++)
-            data[i] = fillColor;
-
-        texture.SetData(data);
-        return texture;
+        _aimRectangleTexture = GeometryFactory.CreateFilledTexture(GameCore.GraphicsDevice,_aimRectangle.Width, _aimRectangle.Height, _geometryTint);
     }
 
     public Vector2 GetCenteredMousePosition(Rectangle rectangle)
