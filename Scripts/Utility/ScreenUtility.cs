@@ -5,9 +5,6 @@ using VirusBuster.Base;
 
 namespace VirusBuster.Utility;
 
-/// <summary>
-/// Creates a texture of given width/height filled with a single color.
-/// </summary>
 public static class ScreenUtility
 {
     private static Random rng = new Random();

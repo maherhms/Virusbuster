@@ -9,6 +9,9 @@ public class EnemyManager
     private readonly List<Enemy> _enemies = new();
     public void AddEnemy(Enemy enemy)
     {
+        if (enemy is null)
+            throw new System.ArgumentNullException(nameof(enemy));
+            
         _enemies.Add(enemy);
         enemy.LoadEnemyContent();
     }

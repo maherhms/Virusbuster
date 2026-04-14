@@ -6,7 +6,7 @@ public class EnemyStats
 {
     #region Enemy Spawn
     private float _baseSpawnRate = 5f;
-    public float FlatBonusSpawnRate {get; private set;} =0.5f;
+    public float FlatBonusSpawnRate {get; private set;} =0f;
     public float CurrentSpawnRate
     {
         get

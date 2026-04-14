@@ -12,7 +12,7 @@ public class EnemySpawner
     private EnemyManager _enemyManager;
     public EnemySpawner(EnemyManager enemyManager)
     {
-        _enemyManager = enemyManager;
+        _enemyManager = enemyManager ?? throw new ArgumentNullException(nameof(enemyManager));
     }
     public void Update(GameTime gameTime)
     {

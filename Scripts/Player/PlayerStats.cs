@@ -42,7 +42,7 @@ public class PlayerStats
 
     #region Damage buffs
     /// <summary>
-    ///  this methode is to be used when applying Flat damage bonus for example +1 damage*/
+    ///  this method is to be used when applying Flat damage bonus for example +1 damage*/
     /// </summary>
     /// <param name="amount"></param>
     public void SetFlatBonusDamage(float amount)
@@ -50,7 +50,7 @@ public class PlayerStats
         FlatBonusDamage = amount;
     }
     /// <summary>
-    /// this methode is to be used when applying health based damage bonus for example +0.1% max health as damage
+    /// this method is to be used when applying health based damage bonus for example +0.1% max health as damage
     /// </summary>
     /// <param name="amount"></param>
     public void SetHealthPercentageAsBonusDamage(float amount)
@@ -61,7 +61,7 @@ public class PlayerStats
     {
         PercentagePerSecondBonusDamage = amount;
     }
-    // TODO: use in an update methode
+    // TODO: use in an update method
     public void CountAccumulatedPercentagePerSecondBonusDamage()
     {
         AccumulatedPercentagePerSecondBonusDamage += PercentagePerSecondBonusDamage;
@@ -70,7 +70,7 @@ public class PlayerStats
 
     #region Health buffs
     /// <summary>
-    /// this methode is to be used when applying max health bonus for example +4 max health
+    /// this method is to be used when applying max health bonus for example +4 max health
     /// </summary>
     /// <param name="amount"></param>
     public void SetMaxBonusHealth(float amount)
@@ -78,7 +78,7 @@ public class PlayerStats
         MaxBonusHealth = amount;
     }
     /// <summary>
-    /// this methode is to be used when applying max health bonus per kill for example +1 permanent max HP per kill
+    /// this  is to be used when applying max health bonus per kill for example +1 permanent max HP per kill
     /// </summary>
     /// <param name="amount"></param>
     public void SetPerKillMaxBonusHealth(float amount)
