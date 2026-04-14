@@ -25,7 +25,22 @@ public class RedRectangularEnemy : RectangularEnemy
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        // Simple movement to the right
-        _position.X += _speed * dt;
+        // Get screen center
+        Vector2 center = ScreenUtility.GetScreenCenter();
+
+        // Direction from enemy to center
+        Vector2 direction = center - _position;
+
+        if (direction != Vector2.Zero)
+            direction.Normalize();
+
+        // Move toward center
+        _position += direction * _speed * dt;
     }
+
+    public static (int Width, int Height) GetSize()
+    {
+        return (WIDTH, HEIGHT);
+    }
+
 }

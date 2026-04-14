@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using VirusBuster.Base;
+using VirusBuster.Utility;
 
 namespace VirusBuster.Enemies;
 
@@ -24,9 +25,9 @@ public class EnemySpawner
 
             //spawn Red Rectangular Enemy
             //TODO
-            var pos= new Vector2(100f,100f);
-            //TODO
-            _enemyManager.AddEnemy(new RedRectangularEnemy(pos,10f,50f));
+            var (w, h) = RedRectangularEnemy.GetSize();
+            var spawnPos = ScreenUtility.GetRandomOffscreenPosition(w, h);
+            _enemyManager.AddEnemy(new RedRectangularEnemy(spawnPos,10f,50f));
         }
     }
 }
