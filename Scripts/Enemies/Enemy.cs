@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,13 +8,13 @@ public abstract class Enemy
     protected Vector2 _position;
     protected Color _color;
 
-    // public Vector2 Position
-    // {
-    //     get => _position;
-    //     set => _position = value;
-    // }
+    public Vector2 Position
+    {
+        get => _position;
+        set => _position = value;
+    }
 
-    // public Color Color => _color;
+    public Color Color => _color;
 
     protected Enemy(Vector2 position, Color color)
     {
