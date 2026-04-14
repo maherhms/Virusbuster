@@ -27,7 +27,7 @@ public class EnemySpawner
             //TODO
             var (w, h) = RedRectangularEnemy.GetSize();
             var spawnPos = ScreenUtility.GetRandomOffscreenPosition(w, h);
-            _enemyManager.AddEnemy(new RedRectangularEnemy(spawnPos,10f,50f));
+            _enemyManager.AddEnemy(new RedRectangularEnemy(spawnPos,GameState.Instance.EnemyStats.CurrentHealth,GameState.Instance.EnemyStats.MaxSpeed));
         }
     }
 }

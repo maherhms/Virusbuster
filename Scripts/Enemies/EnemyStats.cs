@@ -23,4 +23,9 @@ public class EnemyStats
     private float _baseHealth=1f;
     public float CurrentHealth => _baseHealth;
     #endregion
+
+    #region EnemySpeed
+    private float _baseSpeed=50f;
+    public float MaxSpeed => _baseSpeed;
+    #endregion
 }

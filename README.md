@@ -12,19 +12,29 @@ The current version includes:
 ```mermaid
 sequenceDiagram
     participant BreachScene
+    participant EnemySpawner
+    participant EnemyManager
     participant PlayerAttackManager
     participant PlayerMouse
     participant GeometryFactory
     participant SpriteBatch
 
-    BreachScene->>PlayerAttackManager: Initialize(playerMouse)
-    BreachScene->>PlayerMouse: Initialize()
-    BreachScene->>PlayerMouse: LoadContent(graphicsDevice)
-    PlayerMouse->>GeometryFactory: CreateFilledTexture(device,width,height,color)
-    GeometryFactory-->>PlayerMouse: Texture2D
-    BreachScene->>PlayerAttackManager: Update() / Draw()
-    PlayerAttackManager->>PlayerMouse: Update() / Draw(spriteBatch)
-    PlayerMouse->>SpriteBatch: Draw(attackTexture / aimTexture, positions)
+    BreachScene->>GeometryFactory: (during LoadContent) CreateFilledTexture(device,w,h,color)
+    GeometryFactory-->>PlayerMouse: Texture2D (attack / aim)
+    BreachScene->>PlayerMouse: LoadPlayerMouseContent()
+    BreachScene->>EnemyManager: ctor / ready
+    BreachScene->>EnemySpawner: ctor(enemyManager)
+
+    loop each frame
+      BreachScene->>EnemySpawner: Update(gameTime)
+      EnemySpawner-->>EnemyManager: AddEnemy(new Enemy at offscreen pos)
+      BreachScene->>EnemyManager: Update(gameTime)
+      BreachScene->>PlayerAttackManager: Update()
+      PlayerAttackManager->>PlayerMouse: Update() / Draw(spriteBatch)
+      PlayerMouse->>SpriteBatch: Draw(attackTexture / aimTexture, positions)
+      EnemyManager->>SpriteBatch: Draw(enemies)
+    end
+
 
 ```
 
