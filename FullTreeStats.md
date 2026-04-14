@@ -119,10 +119,10 @@
 
 ## Phase 3
 ## Enemy Spawns
-- [ ] crowding — +50% spawn rate (15 levels)
-- [ ] swarming — +200% spawn rate (1 level)
-- [ ] infesting — +100% spawn rate (5 levels)
-- [ ] overloading — +400% spawn rate (5 levels)
+- [X] crowding — +50% spawn rate (15 levels)
+- [X] swarming — +200% spawn rate (1 level)
+- [X] infesting — +100% spawn rate (5 levels)
+- [X] overloading — +400% spawn rate (5 levels)
 - [ ] spawn exploders — +5% chance for exploders (1 level)
 - [ ] exploder area — +15% explosion size (5 levels)
 

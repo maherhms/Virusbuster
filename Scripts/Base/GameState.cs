@@ -1,11 +1,13 @@
+using VirusBuster.Enemies;
 using VirusBuster.Player;
 
 namespace VirusBuster.Base;
 
 public class GameState
 {
-    public static GameState Instance {get; private set;}
+    public static GameState Instance { get; private set; }
     public PlayerStats PlayerStats { get; } = new PlayerStats();
+    public EnemyStats EnemyStats { get; } = new EnemyStats();
 
     // private constructor — nobody outside can call new GameState()
     private GameState() { }
@@ -14,5 +16,5 @@ public class GameState
     {
         Instance = new GameState();
     }
-    
+
 }
