@@ -8,7 +8,7 @@ namespace VirusBuster.Player;
 public class PlayerStats
 {
     #region Damage stats
-    public float BaseDamage { get; private set; } = 10f;
+    private float _baseDamage = 10f;
     public float FlatBonusDamage { get; private set; } = 0f;
     public float HealthPercentageAsBonusDamage { get; private set; } = 0f;
     public float PercentagePerSecondBonusDamage { get; private set; } = 0f;
@@ -16,28 +16,28 @@ public class PlayerStats
     /// <summary>
     /// computed property re-evaluated on every usage
     /// </summary>
-    public float CurrentDamage => (BaseDamage + FlatBonusDamage + HealthPercentageAsBonusDamage) * (1f + AccumulatedPercentagePerSecondBonusDamage);
+    public float CurrentDamage => (_baseDamage + FlatBonusDamage + HealthPercentageAsBonusDamage) * (1f + AccumulatedPercentagePerSecondBonusDamage);
     #endregion
 
     #region Health stats
-    public float BaseHealth { get; private set; } = 15f;
+    private float _baseHealth = 15f;
     public float MaxBonusHealth { get; private set; } = 0f;
     public float PerKillMaxBonusHealth { get; private set; } = 0f;
     public float AccumulatedPerKillMaxBonusHealth { get; private set; } = 0f;
     /// <summary>
     /// computed property re-evaluated on every usage
     /// </summary>
-    public float MaxHealth => (BaseHealth + MaxBonusHealth + AccumulatedPerKillMaxBonusHealth);
+    public float MaxHealth => (_baseHealth + MaxBonusHealth + AccumulatedPerKillMaxBonusHealth);
     #endregion
 
     #region Attack Size
-    public Vector2 BaseAttackSize { get; private set; } = new Vector2(100, 100);
+    private Vector2 _baseAttackSize = new Vector2(100, 100);
     public float PercentageBonusAttackSize { get; private set; } = 0f;
-    public Vector2 CurrentAttackSize => (BaseAttackSize) * (1f + PercentageBonusAttackSize);
+    public Vector2 CurrentAttackSize => (_baseAttackSize) * (1f + PercentageBonusAttackSize);
     #endregion
 
     #region Attack Speed
-    public float BaseAttackSpeed { get; private set; } = 1f;
+    public float _baseAttackSpeed { get; private set; } = 1f;
     #endregion
 
     #region Damage buffs

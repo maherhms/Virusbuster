@@ -19,7 +19,7 @@ public class PlayerMouse
     private readonly Color _contourColor = new Color(Color.White, 0.35f);
     private readonly Color _geometryTint = Color.White;
 
-    public void LoadContent()
+    public void LoadPlayerMouseContent()
     {
         InitializeMouseTexture();
         InitializeCenterMouseTexture();
@@ -60,11 +60,11 @@ public class PlayerMouse
     public Texture2D GetPlayerMouseTexture() => _attackRectangleTexture;
     public Color GetPlayerMouseColor() => _mouseColor;
 
-    public void DrawPlayerMouse()
+    public void DrawPlayerMouse(SpriteBatch spriteBatch)
     {
-        GameCore.SpriteBatch.Draw(_attackRectangleTexture, GetCenteredMousePosition(_attackRectangle), _mouseColor);
-        GameCore.SpriteBatch.Draw(_aimRectangleTexture, GetCenteredMousePosition(_aimRectangle), Color.White);
-        DrawOutline(GameCore.SpriteBatch, GetCenteredMousePosition(_attackRectangle), _contourColor);
+        spriteBatch.Draw(_attackRectangleTexture, GetCenteredMousePosition(_attackRectangle), _mouseColor);
+        spriteBatch.Draw(_aimRectangleTexture, GetCenteredMousePosition(_aimRectangle), Color.White);
+        DrawOutline(spriteBatch, GetCenteredMousePosition(_attackRectangle), _contourColor);
     }
 
     public void DrawOutline(SpriteBatch spriteBatch, Vector2 position, Color color)
